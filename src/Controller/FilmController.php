@@ -10,10 +10,13 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+/**
+ * @Route("/film")
+ */
 class FilmController extends AbstractController
 {
     /**
-     * @Route("/film", name="film_index")
+     * @Route("/", name="film_index")
      */
     public function index(FilmRepository $filmRepository): Response
     {

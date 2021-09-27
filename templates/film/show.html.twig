@@ -23,6 +23,14 @@
                 <th>Category</th>
                 <td>{{ film.category.name }}</td>
             </tr>
+            <tr>
+                <th>Artists</th>
+                <td>
+                    {% for artist in film.artists %}
+                        {{ artist.firstname }}   {{ artist.lastname }} <br>
+                    {% endfor %}
+                </td>
+            </tr>
         </tbody>
     </table>
 
