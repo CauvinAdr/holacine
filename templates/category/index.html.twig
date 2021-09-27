@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CategoryController!{% endblock %}
+
+{% block body %}
+        <h1>Liste des catégories</h1>
+
+        <table class="table table-dark table-striped">
+                <thead>
+                <tr>
+                        <td>Désignation de la catégorie</td>
+                        <td>Action</td>
+                </tr>
+                </thead>
+                <tbody>
+                        {% for category in categories %}
+                                <tr>
+                                        <td>{{ category.name }}</td>
+                                        <td>
+                                                <a class="btn btn-dark" href="{{ path('delete_category', {'id': category.id}) }}"><i class="fas fa-trash"></i></a>
+                                        </td>
+                                </tr>
+                        {% endfor %}
+                </tbody>
+        </table>
+{% endblock %}

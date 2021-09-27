@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Artist index{% endblock %}
+
+{% block body %}
+    <h1>Artist index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Lastname</th>
+                <th>Firstname</th>
+                <th>Birthdate</th>
+                <th>Films</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for artist in artists %}
+            <tr>
+                <td>{{ artist.id }}</td>
+                <td>{{ artist.lastname }}</td>
+                <td>{{ artist.firstname }}</td>
+                <td>{{ artist.birthdate ? artist.birthdate|date('Y-m-d') : '' }}</td>
+                <td>
+                    {% for film in artist.film %}
+                        <span> {{ film.title }} </span>
+                    {% endfor %}
+                </td>
+                <td>
+                    <a href="{{ path('artist_show', {'id': artist.id}) }}">show</a>
+                    <a href="{{ path('artist_edit', {'id': artist.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('artist_new') }}">Create new</a>
+{% endblock %}
